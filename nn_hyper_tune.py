@@ -30,7 +30,8 @@ def main():
         for lr in lrs:
             config = {"lr": lr, "batch_size": batch_size}
             model = Network()
-            acc, accuracies, train_losses = nn_train.train_mnist(model, config, train_dataloader, valid_dataloader, epochs=20, checkpoint=tune_checkpoint)
+            acc, accuracies, train_losses = nn_train.train_mnist(model, config, train_dataloader, valid_dataloader, epochs=20, \
+                checkpoint=tune_checkpoint, global_best_acc=best_acc)
             if acc > best_acc:
                 best_acc = acc
                 best_config = config

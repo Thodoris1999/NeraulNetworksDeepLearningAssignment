@@ -33,7 +33,8 @@ def train_batch(dataloader, model, loss_fn, optimizer):
     return loss
 
 
-def train_mnist(net, config, train_dataloader, valid_dataloader, epochs=20, checkpoint='nn.pt', retrain=True):
+# retrain means train from scratch, not resume training
+def train_mnist(net, config, train_dataloader, valid_dataloader, epochs=20, checkpoint='nn.pt', retrain=True, global_best_acc=None):
     print("Using {} device".format(device))
     net.to(device)
 
@@ -51,7 +52,7 @@ def train_mnist(net, config, train_dataloader, valid_dataloader, epochs=20, chec
         optimizer = optim.SGD(net.parameters(), lr=config['lr'], momentum=0.9)
 
     loss_fn = nn.CrossEntropyLoss()
-    max_accuracy = -1
+    max_accuracy = -1 if global_best_acc is None else global_best_acc
     accuracies = np.zeros((epochs,))
     train_losses = np.zeros((epochs,))
     print("----------------Trainining with params------------------")
