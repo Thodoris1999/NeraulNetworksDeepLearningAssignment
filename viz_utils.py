@@ -14,8 +14,8 @@ def bar_plot(title, labels, data):
 
 def viz_cm_examples(cm_examples):
     fig = plt.figure()
-    fig.supxlabel('actual classes')
-    fig.supylabel('predicted classes')
+    fig.supxlabel('predicted classes')
+    fig.supylabel('actual classes')
     for y in range(10):
         for pred in range(10):
             img = cm_examples[y][pred]

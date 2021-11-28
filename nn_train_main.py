@@ -13,8 +13,8 @@ import resnet
 device = "gpu" if torch.cuda.is_available else "cpu"
 
 def main():
-    checkpoint = "rescnn3_main.pt"
-    net = resnet.ResCNN()
+    checkpoint = "bn_cnn_main.pt"
+    net = batchnorm_cnn.BatchnormCNN()
     config = {'batch_size': 32, "lr": 1e-2}
 
     train_dataloader, test_dataloader = utils.mnist_data(config['batch_size'])
