@@ -34,7 +34,7 @@ def train_batch(dataloader, model, loss_fn, optimizer):
 
 
 # retrain means train from scratch, not resume training
-def train_mnist(net, config, train_dataloader, valid_dataloader, epochs=20, checkpoint='nn.pt', retrain=True, global_best_acc=None):
+def train_mnist(net, config, train_dataloader, valid_dataloader, epochs=25, checkpoint='nn.pt', retrain=True, global_best_acc=None):
     print("Using {} device".format(device))
     net.to(device)
 

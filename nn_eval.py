@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 
 from cnn import CNNetwork
 from resnet import ResCNN
+from batchnorm_cnn import BatchnormCNN
 import utils
 import viz_utils
 
@@ -16,13 +17,13 @@ def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Using {} device".format(device))
 
-    checkpoint_name = "rescnn_main.pt"
+    checkpoint_name = "norm_cnn_best.pt"
     MODELS_PATH = 'models'
     if not os.path.exists(MODELS_PATH):
         os.makedirs(MODELS_PATH)
     MODEL_PATH = os.path.join(MODELS_PATH, checkpoint_name)
 
-    net = ResCNN()
+    net = BatchnormCNN()
     checkpoint = torch.load(MODEL_PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
     net.to(device)
